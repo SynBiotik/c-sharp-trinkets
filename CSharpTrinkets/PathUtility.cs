@@ -61,7 +61,14 @@ namespace Bazar.Trinkets
 
         public string AbsolutePath { get { return getAbsolutePath(); } }
 
-        public bool? Exists { get { return directoryOrFileExists(); } }
+        public bool Exists
+        {
+            get
+            {
+                bool? exists = directoryOrFileExists();
+                return exists.HasValue && exists.Value;
+            }
+        }
 
         #endregion public properties
 
