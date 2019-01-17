@@ -2,21 +2,23 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Company>Bazar</Company>
+    <Company>Bazaar</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Authors>SynBiotik</Authors>
     <PackageId>Bazar.CSharpTrinkets</PackageId>
-    <Description>An assortment of tools/utilities that tend to get re-written on different projects.</Description>
+    <Description>An assortment of tools/utilities that tend to get re-written on different projects.
+Right now it only contains PathUtility but more will be added soon.</Description>
     <Copyright>Copyright (c) 2019 SynBiotik</Copyright>
     <PackageProjectUrl></PackageProjectUrl>
     <RepositoryUrl>https://github.com/SynBiotik/c-sharp-trinkets</RepositoryUrl>
     <NeutralLanguage />
     <PackageTags>utilities c#</PackageTags>
     <PackageLicenseUrl>https://github.com/SynBiotik/c-sharp-trinkets/blob/master/LICENSE</PackageLicenseUrl>
-    <Version>0.0.24</Version>
+    <Version>0.0.01</Version>
     <AssemblyName>Bazar.CSharpTrinkets</AssemblyName>
     <RootNamespace>Bazar.Trinkets</RootNamespace>
+    <Product>Bazaar.CSharpTrinkets</Product>
   </PropertyGroup>
 
 </Project>
