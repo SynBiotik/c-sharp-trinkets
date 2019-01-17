@@ -193,16 +193,19 @@ namespace Bazar.Trinkets
         private bool? directoryOrFileExists()
         {
             bool? exists = null;
-            string absolutePath = AbsolutePath;
-            if (absolutePath != null)
+            if (_isValid)
             {
-                try
+                string absolutePath = AbsolutePath;
+                if (absolutePath != null)
                 {
-                    exists = _filename != null
-                        ? System.IO.File.Exists(absolutePath)
-                        : System.IO.Directory.Exists(absolutePath);
+                    try
+                    {
+                        exists = _filename != null
+                            ? System.IO.File.Exists(absolutePath)
+                            : System.IO.Directory.Exists(absolutePath);
+                    }
+                    catch { exists = null; }
                 }
-                catch { exists = null; }
             }
             return exists;
         }
