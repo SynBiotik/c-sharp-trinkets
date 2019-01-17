@@ -97,7 +97,11 @@ namespace Bazar.Trinkets
 
         public static PathUtility GetExecutingDirectory() { return new PathUtility(getExecutingDirectory(), false); }
 
-        public static PathUtility GetCurrentDirectory() { return new PathUtility(getCurrentDirectory(), false); }
+        public static PathUtility GetCurrentDirectory()
+        {
+            string currentDirectory = getCurrentDirectory();
+            return currentDirectory != null ? new PathUtility(getCurrentDirectory(), false) : null;
+        }
 
         #endregion constructors and initializers
 

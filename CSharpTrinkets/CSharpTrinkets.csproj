@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Company>Bazar</Company>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Authors>SynBiotik</Authors>
     <PackageId>Bazar.CSharpTrinkets</PackageId>
@@ -14,7 +14,7 @@
     <NeutralLanguage />
     <PackageTags>utilities c#</PackageTags>
     <PackageLicenseUrl>https://github.com/SynBiotik/c-sharp-trinkets/blob/master/LICENSE</PackageLicenseUrl>
-    <Version>0.0.22</Version>
+    <Version>0.0.23</Version>
     <AssemblyName>Bazar.CSharpTrinkets</AssemblyName>
     <RootNamespace>Bazar.Trinkets</RootNamespace>
   </PropertyGroup>
