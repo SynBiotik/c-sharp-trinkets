@@ -14,7 +14,7 @@
     <NeutralLanguage />
     <PackageTags>utilities c#</PackageTags>
     <PackageLicenseUrl>https://github.com/SynBiotik/c-sharp-trinkets/blob/master/LICENSE</PackageLicenseUrl>
-    <Version>0.0.23</Version>
+    <Version>0.0.24</Version>
     <AssemblyName>Bazar.CSharpTrinkets</AssemblyName>
     <RootNamespace>Bazar.Trinkets</RootNamespace>
   </PropertyGroup>

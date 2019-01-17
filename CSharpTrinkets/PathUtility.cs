@@ -53,7 +53,15 @@ namespace Bazar.Trinkets
 
         public string[] Directories { get { return _directories; } }
 
-        public string Filename { get { return _filename; } }
+        public string Filename
+        {
+            get { return _filename; }
+            set
+            {
+                if (isFilenameWithoutPathValid(value)) _filename = value;
+                else throw new ArgumentException("The specified value is not a valid filename.", "value");
+            }
+        }
 
         public bool HasVolume { get { return Volume != null; } }
 
@@ -364,7 +372,8 @@ namespace Bazar.Trinkets
                 string[] pathParts = path.Split(new string[] { _directorySeparator }, StringSplitOptions.RemoveEmptyEntries);
                 if (!pathParts.Any(p => string.IsNullOrWhiteSpace(p) || (_volumeSeparator != null && p.Contains(_volumeSeparator))))
                 {
-                    if (isDirectory || (isFile.HasValue && !isFile.Value))
+                    string lastPart = pathParts.Last();
+                    if (isDirectory || isFilenameWithoutPathValid(lastPart) || (isFile.HasValue && !isFile.Value))
                     {
                         _directories = pathParts;
                         _filename = null;
@@ -373,12 +382,20 @@ namespace Bazar.Trinkets
                     else
                     {
                         _directories = pathParts.Take(pathParts.Length - 1).ToArray();
-                        _filename = pathParts.Last();
+                        _filename = lastPart;
                         if (isFile.HasValue && !isFile.Value) _isValid = false;
                     }
                 }
                 else _isValid = false;
             }
+        }
+
+        private bool isFilenameWithoutPathValid(string filename)
+        {
+            return !filename.Any(c => c.Equals(_standardDirectorySeparator) ||
+                                 c.Equals(_altDirectorySeparator) ||
+                                 c.Equals(_volumeSeparator) ||
+                                 _invalidFilenameCharacters.Any(i => i.Equals(c)));
         }
 
         private bool isBasePathValid()
