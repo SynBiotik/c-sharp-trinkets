@@ -3,10 +3,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Bazar.Trinkets
+namespace Bazaar.Trinkets
 {
 
-    public class PathUtility
+    public class PathInfo
     {
 
         #region private static fields
@@ -30,7 +30,7 @@ namespace Bazar.Trinkets
         private string _filename = null;
         private string _directorySeparator = null;
         private bool _isAbsolute = false;
-        private PathUtility _basePath = null;
+        private PathInfo _basePath = null;
         private bool _isValid = false;
 
         #endregion private fields
@@ -82,33 +82,33 @@ namespace Bazar.Trinkets
 
         #region constructors and initializers
 
-        protected PathUtility(string basePath, string path, bool? isFile = null)
+        protected PathInfo(string basePath, string path, bool? isFile = null)
         {
             initializeStaticData();
             setPath(path, isFile);
             setBasePath(basePath);
         }
 
-        protected PathUtility(string path, bool? isFile = null) : this(null, path, isFile) { }
+        protected PathInfo(string path, bool? isFile = null) : this(null, path, isFile) { }
 
-        public static PathUtility Directory(string basePath, string path) { return new PathUtility(basePath, path, false); }
+        public static PathInfo Directory(string basePath, string path) { return new PathInfo(basePath, path, false); }
 
-        public static PathUtility Directory(string path) { return new PathUtility(getCurrentDirectory(), path, false); }
+        public static PathInfo Directory(string path) { return new PathInfo(getCurrentDirectory(), path, false); }
 
-        public static PathUtility File(string basePath, string path) { return new PathUtility(basePath, path, true); }
+        public static PathInfo File(string basePath, string path) { return new PathInfo(basePath, path, true); }
 
-        public static PathUtility File(string path) { return new PathUtility(getCurrentDirectory(), path, true); }
+        public static PathInfo File(string path) { return new PathInfo(getCurrentDirectory(), path, true); }
 
-        public static PathUtility FileOrDirectory(string basePath, string path) { return new PathUtility(basePath, path); }
+        public static PathInfo FileOrDirectory(string basePath, string path) { return new PathInfo(basePath, path); }
 
-        public static PathUtility FileOrDirectory(string path) { return new PathUtility(getCurrentDirectory(), path); }
+        public static PathInfo FileOrDirectory(string path) { return new PathInfo(getCurrentDirectory(), path); }
 
-        public static PathUtility GetExecutingDirectory() { return new PathUtility(getExecutingDirectory(), false); }
+        public static PathInfo GetExecutingDirectory() { return new PathInfo(getExecutingDirectory(), false); }
 
-        public static PathUtility GetCurrentDirectory()
+        public static PathInfo GetCurrentDirectory()
         {
             string currentDirectory = getCurrentDirectory();
-            return currentDirectory != null ? new PathUtility(getCurrentDirectory(), false) : null;
+            return currentDirectory != null ? new PathInfo(getCurrentDirectory(), false) : null;
         }
 
         #endregion constructors and initializers
@@ -224,7 +224,7 @@ namespace Bazar.Trinkets
 
         private void setBasePath(string basePath)
         {
-            _basePath = basePath != null ? new PathUtility(basePath, false) : null;
+            _basePath = basePath != null ? new PathInfo(basePath, false) : null;
         }
 
         private string getEmptyOrWhiteSpaceAsNull(string value, bool trim = false)
